@@ -1,12 +1,12 @@
 name: Run Java Test on Push or Manually
 
 on:
-  push:                # Run when code is pushed to any branch
-  workflow_dispatch:   # Allow manual trigger via GitHub UI
+  push:
+  workflow_dispatch:
 
 jobs:
   run-java-tests:
-    runs-on: windows-latest  # ✅ Official GitHub-hosted Windows runner
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -20,3 +20,9 @@ jobs:
 
       - name: Build and run tests
         run: mvn test
+
+      - name: Upload test report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test-Report
+          path: GitHubActionsTest/target/surefire-reports/FirstPackage.MyManualTest.txt
