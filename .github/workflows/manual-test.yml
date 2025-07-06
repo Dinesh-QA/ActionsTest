@@ -12,18 +12,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      - name: Debug: Show folder structure
+        run: dir
+        shell: cmd
 
+      - name: Debug: List folders recursively
+        run: dir /s /b
+        shell: cmd
+
+      # 💡 Adjust this path if your Maven project is in a subfolder
       - name: Build and run tests
         run: mvn test
         working-directory: GitHubActionsTest
 
-      - name: Upload test report artifact
+      - name: Debug: Show test output folder
+        run: dir GitHubActionsTest\target\surefire-reports
+        shell: cmd
+
+      - name: Upload test report
         uses: actions/upload-artifact@v4
         with:
-          name: Test-Report
-          path: GitHubActionsTest/target/surefire-reports/FirstPackage.MyManualTest.txt
+          name: Test-Reports
+          path: GitHubActionsTest/target/surefire-reports/*.txt
