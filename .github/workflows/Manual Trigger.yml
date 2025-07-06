@@ -1,0 +1,24 @@
+name: Run FirstProgram on Windows
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  run-first-program:
+    runs-on: windows-latest  # Use Windows runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # You can change this to 11, 21, etc.
+
+      - name: Build with Maven
+        run: mvn clean compile
+
+      - name: Run FirstProgram
+        run: mvn exec:java -Dexec.mainClass=FirstProgram -Dexec.classpathScope=test
