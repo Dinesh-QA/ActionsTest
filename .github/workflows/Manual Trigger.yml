@@ -1,11 +1,11 @@
 name: Run FirstProgram on Windows
 
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   run-first-program:
-    runs-on: windows-latest  # Use Windows runner
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -15,9 +15,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'  # You can change this to 11, 21, etc.
+          java-version: '17'  # or your required version
 
-      - name: Build with Maven
+      - name: Set up Maven
+        uses: s4u/setup-maven-action@v1.10.0  # Optional if Maven is missing
+
+      - name: Build project
         run: mvn clean compile
 
       - name: Run FirstProgram
