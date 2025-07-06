@@ -6,6 +6,6 @@ public class MyManualTest {
 
     @Test
     public void testPrintSomething() {
-        System.out.println("Hello from GitHub Actions test!");
+        System.out.println("Hi this is Dinesh, This is triggered automatically.");
     }
 }
