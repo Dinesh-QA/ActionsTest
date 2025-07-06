@@ -1,11 +1,12 @@
-name: Run Java Test Manually
+name: Run Java Test on Push or Manually
 
 on:
-  workflow_dispatch:  # Manual trigger from GitHub Actions UI
+  push:                # Run when code is pushed to any branch
+  workflow_dispatch:   # Allow manual trigger via GitHub UI
 
 jobs:
   run-java-tests:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # ✅ Official GitHub-hosted Windows runner
 
     steps:
       - name: Checkout code
