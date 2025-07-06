@@ -1,36 +1,22 @@
-name: Run Java Test on Push or Manually
+name: Push Trigger and Manual Trigger job
 
 on:
-  push:
-  workflow_dispatch:
+  push:                # Run when code is pushed to any branch
+  workflow_dispatch:   # Allow manual trigger via GitHub UI
 
 jobs:
   run-java-tests:
-    runs-on: windows-latest
+    runs-on: windows-latest  # ✅ Official GitHub-hosted Windows runner
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Debug: Show folder structure
-        run: dir
-        shell: cmd
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-      - name: Debug: List folders recursively
-        run: dir /s /b
-        shell: cmd
-
-      # 💡 Adjust this path if your Maven project is in a subfolder
       - name: Build and run tests
         run: mvn test
-        working-directory: GitHubActionsTest
-
-      - name: Debug: Show test output folder
-        run: dir GitHubActionsTest\target\surefire-reports
-        shell: cmd
-
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Test-Reports
-          path: GitHubActionsTest/target/surefire-reports/*.txt
