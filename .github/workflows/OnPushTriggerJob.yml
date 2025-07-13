@@ -1,10 +1,12 @@
 name: Push Trigger job
-on: 
-    [push]
+
+on:
+  push
 
 jobs:
-    getgithub context:
-        runs: windows-latest
-        steps:
-            -name: Print github context
-             run: echo "${{ toJSON(github) }}"
+  get-github-context:
+    runs-on: windows-latest
+
+    steps:
+      - name: Print GitHub context
+        run: echo "${{ toJSON(github) }}"
