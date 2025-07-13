@@ -22,6 +22,7 @@ jobs:
         run: mvn test
 
   print-cmd-message:
+    needs: run-java-tests
     runs-on: windows-latest
 
     steps:
