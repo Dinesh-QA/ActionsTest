@@ -1,6 +1,7 @@
 name: On Pull Request
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, closed]
 
