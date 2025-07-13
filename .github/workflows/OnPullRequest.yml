@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, closed]
+    branches:
+        -Dinesh-QA
+    paths-ignore:
+        -'.github/**'
 
 jobs:
   print-pr-info:

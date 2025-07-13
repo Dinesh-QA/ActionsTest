@@ -1,7 +1,7 @@
 name: Push Trigger job
 
 on:
-  push
+  push:
 
 jobs:
   get-github-context:
