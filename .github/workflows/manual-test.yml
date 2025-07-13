@@ -1,12 +1,12 @@
 name: Push Trigger and Manual Trigger job
 
 on:
-  push:                # Run when code is pushed to any branch
-  workflow_dispatch:   # Allow manual trigger via GitHub UI
+  push:
+  workflow_dispatch:
 
 jobs:
   run-java-tests:
-    runs-on: windows-latest  # ✅ Official GitHub-hosted Windows runner
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -20,3 +20,10 @@ jobs:
 
       - name: Build and run tests
         run: mvn test
+
+  print-cmd-message:
+    runs-on: windows-latest
+
+    steps:
+      - name: Print message from CMD
+        run: echo Hello, this is printed from CMD
