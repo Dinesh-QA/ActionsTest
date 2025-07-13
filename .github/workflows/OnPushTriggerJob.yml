@@ -2,7 +2,7 @@ name: Push Trigger job
 
 on:
   push:
-  path-ignore:
+  paths-ignore:
     - '.github/**'
 
 jobs:
