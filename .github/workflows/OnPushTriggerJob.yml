@@ -2,8 +2,8 @@ name: Push Trigger job
 
 on:
   push:
-  paths-ignore:
-    - '.github/**'
+    paths-ignore:
+      - '.github/**'
 
 jobs:
   get-github-context:
