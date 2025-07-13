@@ -7,5 +7,6 @@ public class LatestTest {
 	public void METHOD1() {
 		System.out.println("This is latest file");
 		System.out.println("This is second latest File");
+		System.out.println("This is third file");
 	}
 }
