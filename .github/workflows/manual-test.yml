@@ -1,8 +1,7 @@
 name: Push Trigger and Manual Trigger job
 
 on:
-  push:
-  workflow_dispatch:
+  [push,workflow_dispatch]
 
 jobs:
   run-java-tests:
